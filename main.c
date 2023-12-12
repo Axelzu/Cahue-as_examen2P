@@ -7,6 +7,7 @@
 #define MAX_NOMBRE_INSUMO 50
 void generarDatosAleatorios(int registros[NUM_INSUMOS][NUM_MESES][2], char nombresInsumos[NUM_INSUMOS][MAX_NOMBRE_INSUMO]) {
     srand(time(NULL));
+    //aqui ya esta prea asignado los nombres de cada cosmetico o producto
     char nombres[][MAX_NOMBRE_INSUMO] = {
         "Jeringas",
         "Vendas",
@@ -50,6 +51,16 @@ void generarDatosAleatorios(int registros[NUM_INSUMOS][NUM_MESES][2], char nombr
         for (int mes = 0; mes < NUM_MESES; ++mes) {
             registros[insumo][mes][0] = rand() % 1000;  // Ingresos aleatorios
             registros[insumo][mes][1] = rand() % 500;   // Egresos aleatorios
+        }
+    }
+}
+//esto es para imrpimir con detalle los registros de ingreso y egresos
+void imprimirDetalle(int registros[NUM_INSUMOS][NUM_MESES][2], char nombresInsumos[NUM_INSUMOS][MAX_NOMBRE_INSUMO]) {
+    printf("\nDetalle de ingresos y egresos por mes y por insumo:\n");
+    for (int insumo = 0; insumo < NUM_INSUMOS; ++insumo) {
+        printf("\nInsumo: %s\n", nombresInsumos[insumo]);
+        for (int mes = 0; mes < NUM_MESES; ++mes) {
+            printf("Mes %d: Ingresos: %d, Egresos: %d\n", mes + 1, registros[insumo][mes][0], registros[insumo][mes][1]);
         }
     }
 }
