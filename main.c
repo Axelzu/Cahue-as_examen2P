@@ -64,3 +64,15 @@ void imprimirDetalle(int registros[NUM_INSUMOS][NUM_MESES][2], char nombresInsum
         }
     }
 }
+//aqui se calulan y se mostraran los totales de ingresos y egresos 
+void calcularTotales(int registros[NUM_INSUMOS][NUM_MESES][2], char nombresInsumos[NUM_INSUMOS][MAX_NOMBRE_INSUMO]) {
+    printf("\nTotales de ingresos y egresos por insumo en todo el año:\n");
+    for (int insumo = 0; insumo < NUM_INSUMOS; ++insumo) {
+        int totalIngresos = 0, totalEgresos = 0;
+        for (int mes = 0; mes < NUM_MESES; ++mes) {
+            totalIngresos += registros[insumo][mes][0];
+            totalEgresos += registros[insumo][mes][1];
+        }
+        printf("%d. %s: Total Ingresos: %d, Total Egresos: %d\n", insumo + 1, nombresInsumos[insumo], totalIngresos, totalEgresos);
+    }
+}
