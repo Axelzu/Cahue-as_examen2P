@@ -76,3 +76,35 @@ void calcularTotales(int registros[NUM_INSUMOS][NUM_MESES][2], char nombresInsum
         printf("%d. %s: Total Ingresos: %d, Total Egresos: %d\n", insumo + 1, nombresInsumos[insumo], totalIngresos, totalEgresos);
     }
 }
+int main() {
+    int registros[NUM_INSUMOS][NUM_MESES][2] = {0};
+    char nombresInsumos[NUM_INSUMOS][MAX_NOMBRE_INSUMO];
+
+    generarDatosAleatorios(registros, nombresInsumos);
+
+    int opcion;
+    do {
+        printf("\nOpciones:\n");
+        printf("1) Imprimir detalle de ingresos y egresos por mes y por insumo\n");
+        printf("2) Obtener total de ingresos y egresos por insumo en todo el año\n");
+        printf("0) Salir\n");
+        printf("Seleccione una opción: ");
+        scanf("%d", &opcion);
+
+        switch (opcion) {
+            case 1:
+                imprimirDetalle(registros, nombresInsumos);
+                break;
+            case 2:
+                calcularTotales(registros, nombresInsumos);
+                break;
+            case 0:
+                printf("Saliendo del programa...\n");
+                break;
+            default:
+                printf("Opción no válida. Inténtelo de nuevo.\n");
+        }
+    } while (opcion != 0);
+
+    return 0;
+}
